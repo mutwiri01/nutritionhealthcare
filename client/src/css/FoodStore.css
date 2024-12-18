@@ -1,0 +1,218 @@
+.foodstore-container {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+.header {
+  text-align: center;
+  background: #4CAF50;
+  color: white;
+  padding: 20px 0;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.8em;
+  letter-spacing: 1px;
+}
+
+.intro-section {
+  margin: 20px 0;
+  padding: 15px 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.intro-section p {
+  margin: 10px 0;
+}
+
+.intro-gif {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.categories-section,
+.health-conditions-section,
+.food-categories-section,
+.nutrition-section,
+.virtual-kitchen-section,
+.diet-profile-section {
+  margin: 20px 0;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #4CAF50;
+  margin-bottom: 15px;
+  font-size: 1.8em;
+}
+
+.icon-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.icon-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9f9f9;
+  padding: 8px 12px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  color: #4CAF50;
+  font-size: 1.5em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background: #4CAF50;
+  color: white;
+}
+
+.virtual-kitchen-gif {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 10px;
+  display: block;
+  margin: 10px auto;
+}
+
+.interactive-tools {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.interactive-tools button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.interactive-tools button:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+.diet-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.submit-btn:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 15px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 10px;
+  font-size: 1.1em;
+}
+
+@media screen and (max-width: 768px) {
+  .intro-section,
+  .categories-section,
+  .health-conditions-section,
+  .food-categories-section,
+  .nutrition-section,
+  .virtual-kitchen-section,
+  .diet-profile-section {
+    padding: 15px;
+  }
+
+  .intro-gif,
+  .virtual-kitchen-gif {
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .interactive-tools button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+  }
+}
