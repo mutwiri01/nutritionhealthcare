@@ -1,52 +1,99 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Header.css';
-import { FaLeaf } from 'react-icons/fa';
+import { FaChevronDown } from 'react-icons/fa';
+
+// Replace with the path to your logo image
+import LogoImage from '/l1.png';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Close menu when a link is clicked
+  const toggleDropdown = (index) => {
+    setDropdownOpen(dropdownOpen === index ? null : index);
+  };
+
   const closeMenu = () => {
     setIsMenuOpen(false);
+    setDropdownOpen(null);
   };
+
+  const links = [
+    {
+      title: 'About us',
+      dropdown: [
+        { name: 'About us', to: '/' },
+      ],
+    },
+    {
+      title: 'Who we are',
+      dropdown: [
+        { name: 'Publications', to: '/education' },
+      ],
+    },
+    {
+      title: 'What we do',
+      dropdown: [
+        { name: 'Health Coaching', to: '/health-coaching' },
+        { name: 'Education', to: '/education' },
+        { name: 'Campaign', to: '/campaign' },
+        { name: 'Projects', to: '/projects' },
+        { name: 'Food Store', to: '/food-store' },
+      ],
+    },
+    {
+      title: 'Research',
+      dropdown: [
+        { name: 'Ai Assisted Research', to: '/research' },
+      ],
+    },
+    {
+      title: 'Resource Center',
+      dropdown: [
+        { name: 'Articles', to: '/resource-center' },
+      ],
+    },
+  ];
 
   return (
     <header className="header-container">
       <nav className="nav">
         <Link to="/" className="logo" onClick={closeMenu}>
-          <FaLeaf style={{ marginRight: '0.5rem' }} />
-          Center for Nutritional Healthcare
+          <img src={LogoImage} alt="Logo" className="logo-image" />
         </Link>
         <button className="menu-button" onClick={toggleMenu}>
           ☰
         </button>
         <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-          <Link to="/health-coaching" className="nav-link" onClick={closeMenu}>
-            Health Coaching
-          </Link>
-          <Link to="/education" className="nav-link" onClick={closeMenu}>
-            Education
-          </Link>
-          <Link to="/campaign" className="nav-link" onClick={closeMenu}>
-            Campaign
-          </Link>
-          <Link to="/projects" className="nav-link" onClick={closeMenu}>
-            Projects
-          </Link>
-          <Link to="/research" className="nav-link" onClick={closeMenu}>
-            Research
-          </Link>
-          <Link to="/resource-center" className="nav-link" onClick={closeMenu}>
-            Resource Center
-          </Link>
-          <Link to="/food-store" className="nav-link" onClick={closeMenu}>
-            Food Store
-          </Link>
+          {links.map((link, index) => (
+            <div key={index} className="nav-item">
+              <div className="nav-link-wrapper" onClick={() => toggleDropdown(index)}>
+                <Link to={link.to} className="nav-link">
+                  {link.title}
+                </Link>
+                {link.dropdown && <FaChevronDown className="dropdown-icon" />}
+              </div>
+              {dropdownOpen === index && (
+                <div className="dropdown">
+                  {link.dropdown.map((item, idx) => (
+                    <Link
+                      to={item.to}
+                      key={idx}
+                      className="dropdown-link"
+                      onClick={closeMenu}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </nav>
     </header>

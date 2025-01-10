@@ -1,207 +1,192 @@
-import { FaAppleAlt, FaCarrot, FaHeartbeat } from "react-icons/fa";
-import "../css/home.css"; // Import the CSS file
+import { useEffect } from "react";
+import "../css/home.css"; // Updated CSS file
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 const Home = () => {
+  useEffect(() => {
+    const animateNumbers = () => {
+      const numbers = document.querySelectorAll(".interactive-number");
+      numbers.forEach((number) => {
+        const targetValue = +number.getAttribute("data-value");
+        let count = 0;
+        const increment = targetValue / 200; // Animation speed
+        const updateNumber = () => {
+          count += increment;
+          if (count >= targetValue) {
+            number.textContent = targetValue.toLocaleString(); // Add commas
+          } else {
+            number.textContent = Math.floor(count).toLocaleString();
+            requestAnimationFrame(updateNumber);
+          }
+        };
+        updateNumber();
+      });
+    };
+
+    const handleScroll = () => {
+      const numbersSection = document.querySelector(
+        ".interactive-numbers-content"
+      );
+      if (numbersSection) {
+        const rect = numbersSection.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+          animateNumbers();
+          window.removeEventListener("scroll", handleScroll); // Trigger once
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <div className="home-container">
       {/* Hero Section */}
-      <div className="home-hero">
-        <div className="home-text">
+      <div
+        className="home-hero"
+        style={{
+          backgroundImage: "url('/la1.jpeg')",
+          backgroundAttachment: "fixed", // Enables scroll-over effect
+          backgroundSize: "contain",
+          backgroundPosition: "right",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="home-text fade-effect">
           <h1 className="home-title">
-            Welcome to the Centre for Nutritional Healthcare
+            &ldquo;DEVELOPING INNOVATIVE APPROACHES TO STOP THE RISING BURDEN OF
+            LIFESTYLE DISEASES&quot;
           </h1>
           <p className="home-subtitle">
-            We deliver natural healthcare solutions that are sustainable,
-            comprehensive, and restorative. Our contribution to better health is
-            guided by modulating nutrition and lifestyles within communities and
-            restoring ecosystems to sustain and prolong lives.
+            Lifestyle diseases have taken the place of infectious diseases and
+            are indiscriminately afflicting people across the demographic
+            divide. Healthcare systems are overwhelmed and there is an urgent
+            need to deploy new approaches to deal with this scourge.
           </p>
         </div>
       </div>
 
-      <div className="home-slider-container">
-        <h2 className="home-slider-title">Explore Nutritional Healthcare</h2>
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false, // keeps autoplay on interaction
-          }}
-          spaceBetween={20}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          className="home-slider"
-        >
-          {/* Slide 1 */}
-          <SwiperSlide>
-            <div className="home-slide-card">
-              <h3 className="home-slide-title">Lifestyle and health</h3>
-              <p className="home-slide-text">
-                Discover the impact of balanced diets on promoting healthy
-                lifestyles and reducing chronic diseases.
+      {/* Content Section */}
+      <div className="home-content">
+        <div className="content-wrapper">
+          {/* First Paragraph with Image on the Right */}
+          <div className="content-row">
+            <div className="content-text">
+              <p>
+                Diabetes, cancers, cardiovascular diseases, chronic respiratory
+                infections, mental health disorders, stroke, and other
+                non-communicable diseases are now the leading cause of death and
+                disability in developing countries. Due to their chronic nature,
+                patients suffer from these diseases for prolonged periods,
+                requiring more medical care, resulting in higher costs.
               </p>
             </div>
-          </SwiperSlide>
-
-          {/* Slide 2 */}
-          <SwiperSlide>
-            <div className="home-slide-card">
-              <h3 className="home-slide-title">Healthy Foods</h3>
-              <p className="home-slide-text">
-                Learn about nutrient-dense foods that contribute to sustainable
-                health.
-              </p>
+            <div className="content-image">
+              <img src="/fa2.png" alt="Disease Awareness" />
             </div>
-          </SwiperSlide>
-
-          {/* Slide 3 */}
-          <SwiperSlide>
-            <div className="home-slide-card">
-              <h3 className="home-slide-title">Natural Remedies</h3>
-              <p className="home-slide-text">
-                Explore natural remedies that complement modern healthcare
-                approaches.
-              </p>
-            </div>
-          </SwiperSlide>
-
-          {/* Additional Slide 4 */}
-          <SwiperSlide>
-            <div className="home-slide-card">
-              <h3 className="home-slide-title">Herbal Medicine</h3>
-              <p className="home-slide-text">
-                Discover the benefits of herbal medicine and how it supports
-                health.
-              </p>
-            </div>
-          </SwiperSlide>
-
-          {/* Additional Slide 5 */}
-          <SwiperSlide>
-            <div className="home-slide-card">
-              <h3 className="home-slide-title">Wellness Practices</h3>
-              <p className="home-slide-text">
-                Explore wellness practices that enhance overall health and well-being.
-              </p>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
-
-      {/* Icons Section */}
-      <div className="home-icon-container">
-        <div className="home-icon-wrapper">
-          <div className="home-icon">
-            <FaAppleAlt />
           </div>
-          <p className="home-icon-text">Redefine healthcare</p>
-        </div>
-        <div className="home-icon-wrapper">
-          <div className="home-icon">
-            <FaHeartbeat />
+
+          {/* Second Paragraph with Image on the Left */}
+          <div className="content-row ">
+            <div className="content-text">
+              <p>
+                Globally, over 14 million people between the ages of 30 and 70
+                years die every year, and 85% of these deaths are in developing
+                countries. In Kenya, 50% of total hospital admissions and over
+                55% of hospital deaths are due to non-communicable diseases
+                (NCDs).
+              </p>
+            </div>
           </div>
-          <p className="home-icon-text">Transform lifestyles</p>
-        </div>
-        <div className="home-icon-wrapper">
-          <div className="home-icon">
-            <FaCarrot />
+
+          {/* Interactive Numbers */}
+          <div className="interactive-numbers-content">
+            <div className="number-item">
+              <span className="interactive-number" data-value="14000000">
+                0
+              </span>
+              <p>people die every year globally</p>
+            </div>
+            <div className="number-item">
+              <span className="interactive-number" data-value="85">
+                0
+              </span>
+              <p>% of these deaths are in developing countries</p>
+            </div>
+            <div className="number-item">
+              <span className="interactive-number" data-value="50">
+                0
+              </span>
+              <p>% of total hospital admissions in Kenya</p>
+            </div>
+            <div className="number-item">
+              <span className="interactive-number" data-value="55">
+                0
+              </span>
+              <p>% of hospital deaths in Kenya</p>
+            </div>
           </div>
-          <p className="home-icon-text">Restore ecosystems</p>
         </div>
       </div>
 
-      {/* Topics Cards Section */}
-      <div className="home-cards-container">
-        {/* Strategy for Alternative Healthcare */}
-        <div className="home-card">
-          <img
-            src="/h2.png"
-            alt="Strategies for Alternative Healthcare"
-            className="home-card-image"
-          />
-          <h2 className="home-card-title">
-            Strategies For Alternative Healthcare
-          </h2>
-          <p className="home-card-text">
-            Conventional healthcare relies on pharmaceutical medicine to manage
-            diseases. However, new scientific research findings have opened
-            doors to alternative care for existing lifestyle health conditions
-            previously regarded as chronic.
-          </p>
-          <button
-            className="home-card-button"
-            onClick={() => (window.location.href = "/education")}
-          >
-            Learn More
-          </button>
+      <div className="new-section">
+        <div className="new-section-content">
+          <img src="/fa1.jpg" alt="Centered" className="new-section-image" />
+          <div className="new-section-text animated-text">
+            <p>
+              Families face imminent poverty due to high costs of treatment and
+              deaths of breadwinners. On a national scale, economic productivity
+              is scaled down by an ailing workforce and early deaths as well as
+              high budgetary allocations for health.
+            </p>
+            <p>
+              It is imperative that sustainable interventions are explored and
+              employed to checkmate this unfortunate scenario. Centre for
+              Nutritional Healthcare is championing a shift in healthcare, by
+              promoting and managing overall well-being of individuals through
+              lifestyle change, and their empowerment towards healthier choices.
+              Through its programs, it intends to transform healthcare and make
+              it sustainable, comprehensive, and restorative. According to
+              nutritional healthcare science, diet and lifestyle are key
+              determinants of human health, while disease is a direct
+              consequence of improper application of the same.
+            </p>
+          </div>
         </div>
-
-        {/* Food Justice */}
-        <div className="home-card">
-          <img src="/v1.png" alt="Food Justice" className="home-card-image" />
-          <h2 className="home-card-title">Food Justice</h2>
-          <p className="home-card-text">
-            In the quest to meet demand, global food production and processing
-            systems have sidelined nutritional value to prioritize food
-            security. This has led to the emergence of high-calorie but
-            low-nutrient diets that cause nutrient deficiencies and trigger
-            diseases.
-          </p>
-          <button
-            className="home-card-button"
-            onClick={() => (window.location.href = "/campaign")}
-          >
-            Learn More
-          </button>
-        </div>
-
-        {/* Organic Community */}
-        <div className="home-card">
-          <img
-            src="/h11.png"
-            alt="Organic Community"
-            className="home-card-image"
-          />
-          <h2 className="home-card-title">Organic Community</h2>
-          <p className="home-card-text">
-            Fostering local organic farming initiatives that empower communities
-            and support sustainable living practices.
-          </p>
-          <button
-            className="home-card-button"
-            onClick={() => (window.location.href = "/projects")}
-          >
-            Learn More
-          </button>
-        </div>
-
-        {/* Coaching */}
-        <div className="home-card">
-          <img src="/h12.png" alt="Coaching" className="home-card-image" />
-          <h2 className="home-card-title">Coaching</h2>
-          <p className="home-card-text">
-            Coaching is at the heart of our mission, helping individuals achieve
-            optimal health and wellbeing by focusing on personalized nutrition
-            and lifestyle changes.
-          </p>
-          <button
-            className="home-card-button"
-            onClick={() => (window.location.href = "/health-coaching")}
-          >
-            Learn More
-          </button>
+      </div>
+      {/* Card Section */}
+      <div className="topics-section">
+        <img
+          src="/l2.png"
+          alt="Key Topics Overview"
+          className="topics-header-image"
+        />
+        <div className="topics-table">
+          <a href="/campaign" className="topic-row">
+            <img src="/h5.png" alt="Food Justice" className="topic-image" />
+            <p className="topic-text">Food Justice, Lifestyle, and Health</p>
+          </a>
+          <a href="/education" className="topic-row">
+            <img src="/v1.png" alt="Plant Proteins" className="topic-image" />
+            <p className="topic-text">
+              Accelerating Uptake of Plant Proteins to Bridge the Nutrient Gap
+            </p>
+          </a>
+          <a href="/education" className="topic-row">
+            <img
+              src="/h3.png"
+              alt="Preventive Health"
+              className="topic-image"
+            />
+            <p className="topic-text">Advocacy for Preventive Health</p>
+          </a>
+          <a href="/education" className="topic-row">
+            <img src="/h7.png" alt="Health Freedom" className="topic-image" />
+            <p className="topic-text">Health Freedom</p>
+          </a>
         </div>
       </div>
     </div>

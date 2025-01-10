@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "../css/education.css";
-import { FaLeaf, FaHeartbeat } from "react-icons/fa";
 
 const Education = () => {
   const [modalContent, setModalContent] = useState(null);
@@ -13,11 +12,12 @@ const Education = () => {
             style={{
               fontWeight: "bold",
               color: "green",
-              textTransform: "lowercase",
+              textTransform: "uppercase",
             }}
           >
             Organic Diet Is Key To Restorative Health
           </h3>
+
           <p>
             We must make deliberate efforts to restore the ecosystem as a
             primary measure to reverse the disease pandemic.
@@ -77,7 +77,7 @@ const Education = () => {
             style={{
               fontWeight: "bold",
               color: "green",
-              textTransform: "lowercase",
+              textTransform: "uppercase",
             }}
           >
             High Nutrient Diets Lead To Healthier Productive Communities
@@ -140,7 +140,7 @@ const Education = () => {
             style={{
               fontWeight: "bold",
               color: "green",
-              textTransform: "lowercase",
+              textTransform: "uppercase",
             }}
           >
             Strategies For Alternative Healthcare
@@ -184,12 +184,61 @@ const Education = () => {
             style={{
               fontWeight: "bold",
               color: "green",
-              textTransform: "lowercase",
+              textTransform: "uppercase",
             }}
           >
             Advocacy For Preventive Health
           </h3>
-          {/* Content for Advocacy */}
+          <p>
+            The global community must adopt suitable proactive and preventive
+            health strategies to stem the burgeoning economic and social cost of
+            disease burden
+          </p>
+          <p>
+            Every person should instinctively be responsible for their own sense
+            of safety. Just like we are wired to react to external dangers to
+            our lives, like crossing the road after the nearest vehicle, so
+            should we respond to threats to our health.
+          </p>
+          <p>
+            Prevention is better than cure because we prevent ourselves from
+            harm rather than wait to deal with it's consequences. If we applied
+            the same reasoning to our health, we would live longer healthier
+            lives
+          </p>
+          <p>
+            While disease burden continues to rise unabatedly, healthcare
+            practice maintains medical treatment as the solution to all health
+            challenges. While this is the scientific practice in global
+            healthcare the approach is today facing serious bio-systemic
+            challenges such as drug resistance and side effects.{" "}
+          </p>
+          <p>
+            Lifestyle diseases have pervaded our lives through unhealthy dietary
+            culture and lifestyles and are cutting across the society regardless
+            of age, gender or social class. These diseases today account for 70%
+            of all deaths from illness worldwide.{" "}
+          </p>
+          <p>
+            As the world scrambles to find a suitable solution to this scourge,
+            there is overwhelming scientific evidence of preventive methods of
+            reversing lifestyle diseases which have been ignored.
+          </p>
+          <p>
+            As the most common medium of interaction with our bodies, primary
+            and secondary food are the greatest catalysts on the function and
+            status of the body at any given time in our lives. Thieir capacity
+            to nourish, maintain and support proper and balanced biological body
+            function as well as protect it from disease cannot be gainsaid.
+            What's more, food nutrients and lifestyle are not only able to
+            reverse diseases, they also actively prevent the body from onset of
+            the same.
+          </p>
+          <p>
+            This calls for consumer empowerment to enable them make informed
+            lifestyle choices and develop a proactive mentality on individual
+            health leading to longer productive lives.
+          </p>
         </>
       );
     } else {
@@ -208,28 +257,23 @@ const Education = () => {
 
   return (
     <div className="page-container">
-      <h1 className="title">Education</h1>
-      <img
-        className="education-image"
-        src="h13.png"
-        alt="Education"
-      />
+      <h1 className="title">NUTRITIONAL INFORMATION </h1>
+      <img className="education-image" src="/e1.jpg" alt="Education" />
       <div className="introduction">
         <p>
           Public education is a vital tool for social economic change and
           growth. Going by the threat to life and heavy economic burden posed by
           lifestyle diseases in society today, no effort should be spared to
-          enlighten and empower the people to overcome these challenges. Centre
-          for Nutritional Health shall organise public sensitization and
-          education forums to get the message across.
+          enlighten and empower the people to overcome these challenges.
         </p>
+        <p>Centre for Nutritional Health provides knowledge and organises public sensitization and education forums to empower communities in making informed lifestyle and dietary choices. It is expected that such interventions will build momentum towards the required change and transformation of healthcare and livelihoods.</p>
       </div>
 
       <div className="grid">
         {/* Card for Lifestyle & Health */}
         <div className="card">
           <div className="icon">
-            <FaHeartbeat />
+            <img src="/li1.jpg" alt="Lifestyle & Health" />
           </div>
           <h3 className="card-title">Lifestyle & Health</h3>
           <ul>
@@ -239,6 +283,15 @@ const Education = () => {
                 handleListItemClick("Strategies For Alternative Healthcare")
               }
             >
+              <img
+                src="/fa1.jpg"
+                alt="Lifestyle & Health"
+                style={{
+                  width: "180px",
+                  height: "180px",
+                  objectFit: "contain",
+                }}
+              />
               Strategies For Alternative Healthcare
             </li>
             <li
@@ -249,6 +302,15 @@ const Education = () => {
                 )
               }
             >
+              <img
+                src="/fa2.png"
+                alt="Lifestyle & Health"
+                style={{
+                  width: "180px",
+                  height: "180px",
+                  objectFit: "contain",
+                }}
+              />
               High Nutrient Diets Lead To Healthier Productive Communities
             </li>
           </ul>
@@ -257,7 +319,7 @@ const Education = () => {
         {/* Card for Environment & Nutrition */}
         <div className="card">
           <div className="icon">
-            <FaLeaf />
+            <img src="/env.png" alt="Environment & Nutrition" />
           </div>
           <h3 className="card-title">Environment & Nutrition</h3>
           <ul>
@@ -267,6 +329,15 @@ const Education = () => {
                 handleListItemClick("Organic Diet Is Key To Restorative Health")
               }
             >
+              <img
+                src="/la2.jpg"
+                alt="Lifestyle & Health"
+                style={{
+                  width: "180px",
+                  height: "180px",
+                  objectFit: "contain",
+                }}
+              />
               Organic Diet Is Key To Restorative Health
             </li>
           </ul>
@@ -274,9 +345,7 @@ const Education = () => {
 
         {/* Card for Advocacy For Preventive Health */}
         <div className="card">
-          <div className="icon">
-            <FaLeaf />
-          </div>
+          <div className="icon"></div>
           <h3 className="card-title">Advocacy For Preventive Health</h3>
           <ul>
             <li
@@ -285,13 +354,21 @@ const Education = () => {
                 handleListItemClick("advocacy for preventive health")
               }
             >
+              <img
+                src="/h4.png"
+                alt="Lifestyle & Health"
+                style={{
+                  width: "280px",
+                  height: "280px",
+                  objectFit: "contain",
+                }}
+              />
               Advocacy For Preventive Health
             </li>
           </ul>
         </div>
       </div>
 
-     
       {modalContent && (
         <div className="modal active">
           <div className="modal-content">

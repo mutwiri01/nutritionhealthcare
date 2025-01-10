@@ -158,20 +158,7 @@ const Projects = () => {
           </CardContent>
         </Card>
       </CardContainer>
-      <Form onSubmit={handleSubmit}>
-        <h2 style={{ color: '#2C3E50', marginBottom: '1rem', textAlign: 'center' }}>
-          Project Application Form
-        </h2>
-        <Input type="text" placeholder="Full Name" required />
-        <Input type="email" placeholder="Email" required />
-        <Input type="tel" placeholder="Phone Number" />
-        <TextArea
-          placeholder="Which project are you interested in and why?"
-          rows="4"
-          required
-        />
-        <Button type="submit">Apply for Project</Button>
-      </Form>
+      
     </PageContainer>
   )
 }

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap');
 /* General Styles */
 body {
   margin: 0;
@@ -36,12 +37,14 @@ body {
 }
 
 .education-image {
-
   object-fit: cover;
   border-radius: 10px;
   display: block; /* Ensures the image is a block element */
   margin-left: auto; /* Centers the image horizontally */
   margin-right: auto; /* Centers the image horizontally */
+  width: 80%; /* Adjusts the width to a percentage of the parent container */
+  height: auto; /* Maintains the aspect ratio of the image */
+  max-height: 300px; /* Ensures the image does not occupy too much vertical space */
 }
 
 
@@ -56,6 +59,7 @@ body {
 }
 
 /* Grid Section */
+/* Grid Section */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -66,21 +70,48 @@ body {
 .card {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   text-align: center;
   transition: transform 0.3s;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+}
+
+.card-title {
+  margin-right: 20px; /* Adjust as needed */
 }
 
 .card:hover {
   transform: translateY(-10px);
 }
 
-.icon {
-  font-size: 3rem;
-  color: #4caf50;
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.icon img {
+  width: 150px; /* Adjust for smaller dimensions */
+  height: 150px;
+  border-radius: 50%;
+  object-fit: contain;
   margin-bottom: 1rem;
 }
+
+@media (max-width: 768px) {
+  .grid {
+    gap: 1rem; /* Reduces spacing on smaller screens */
+  }
+
+  .card {
+    width: 200px; /* Smaller card width for narrow screens */
+    padding: 1rem;
+  }
+}
+
+
 
 .card-title {
   font-size: 1.5rem;
@@ -204,4 +235,12 @@ body {
     width: 100%; /* Ensures image takes full width on smaller screens */
     max-width: 100%; /* Ensures the image scales fully */
   }
+}
+
+p {
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 16px;
 }

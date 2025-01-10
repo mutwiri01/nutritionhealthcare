@@ -42,49 +42,94 @@ const Campaign = () => {
   return (
     <div className="page-container">
       <h1 className="title">Campaign for Healthy Communities</h1>
+      <img className="education-image" src="/p1.png" alt="Education" />
+      <p>
+        Public awareness campaign is a key communication component for
+        sensitizing communities of problems affecting them.{" "}
+      </p>
+      <p>
+        At the Centre for Nutritional Healthcare we effectively deploy this
+        medium to reach bigger fractions of the populace in shorter time-frames
+        thereby bringing the desired change in lifestyles and health.
+      </p>
+      <p>
+        By building public interest through media messaging and events, we will
+        generate specific outcomes that are goal oriented and institute policy
+        and systemic changes.
+      </p>
 
       {/* Food Justice Section */}
-      <section className="section">
-        <FaBalanceScale className="icon" />
-        <h2 className="section-title">Food Justice</h2>
-        <p>Promoting equal access to nutritious food for all.</p>
-        <button className="learn-more-button" onClick={() => setShowModal(true)}>
-          Learn More
-        </button>
-      </section>
+      <div className="sections-container">
+        {/* Food Justice Section */}
+        <div className="section">
+          <img
+            src="/fd.jpg"
+            alt="Food Justice"
+            className="section-image"
+          />
+          <div className="section-content">
+            <h2 className="section-title">Food Justice</h2>
+            <p>Promoting equal access to nutritious food for all.</p>
+            <button
+              className="learn-more-button"
+              onClick={() => setShowModal(true)}
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
 
-      {/* Food for Health Section */}
-      <section className="section">
-        <FaCarrot className="icon" />
-        <h2 className="section-title">Food for Health</h2>
-        <ul className="list">
-          <li className="list-item" onClick={() => setShowNutrientModal(true)}>
-            Nutrient Harvest
-          </li>
-          <li className="list-item" onClick={() => setShowProteinModal(true)}>
-            Plant Protein Initiative
-          </li>
-          <li className="list-item" onClick={() => setShowPlateModal(true)}>
-            The National Food Plate
-          </li>
-          <li className="list-item" onClick={() => setShowWaterModal(true)}>
-            Water Campaign
-          </li>
-        </ul>
-      </section>
+        {/* Food for Health Section */}
+        <div className="section">
+          <img
+            src="/h1.png"
+            alt="Food for Health"
+            className="section-image"
+          />
+          <div className="section-content">
+            <h2 className="section-title">Food for Health</h2>
+            <ul className="list">
+              <li
+                className="list-item"
+                onClick={() => setShowNutrientModal(true)}
+              >
+                Nutrient Harvest
+              </li>
+              <li
+                className="list-item"
+                onClick={() => setShowProteinModal(true)}
+              >
+                Plant Protein Initiative
+              </li>
+              <li className="list-item" onClick={() => setShowPlateModal(true)}>
+                The National Food Plate
+              </li>
+              <li className="list-item" onClick={() => setShowWaterModal(true)}>
+                Water Campaign
+              </li>
+            </ul>
+          </div>
+        </div>
 
-      {/* Health Freedom Section */}
-      <section className="section">
-        <FaMedkit className="icon" />
-        <h2 className="section-title">Health Freedom</h2>
-        <p>Campaign Against Self Medication</p>
-        <button
-          className="learn-more-button"
-          onClick={() => setShowHealthFreedomModal(true)}
-        >
-          Learn More
-        </button>
-      </section>
+        {/* Health Freedom Section */}
+        <div className="section">
+          <img
+            src="/h3.png"
+            alt="Health Freedom"
+            className="section-image"
+          />
+          <div className="section-content">
+            <h2 className="section-title">Health Freedom</h2>
+            <p>Campaign Against Self Medication</p>
+            <button
+              className="learn-more-button"
+              onClick={() => setShowHealthFreedomModal(true)}
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* Modals */}
       <Modal show={showModal} onClose={() => setShowModal(false)}>
@@ -151,7 +196,10 @@ const Campaign = () => {
         </p>
       </Modal>
 
-      <Modal show={showNutrientModal} onClose={() => setShowNutrientModal(false)}>
+      <Modal
+        show={showNutrientModal}
+        onClose={() => setShowNutrientModal(false)}
+      >
         <h2>Nutrient Deficiency</h2>
         <p>
           NUTRIENT DEFICIENCY - THE COMMON DENOMINATOR FOR DEGENERATIVE AILMENTS
@@ -187,7 +235,8 @@ const Campaign = () => {
       <Modal show={showProteinModal} onClose={() => setShowProteinModal(false)}>
         <h2>Plant Protein Initiative</h2>
         <p>
-          Exploring the shift towards plant-based protein sources and their benefits...
+          Exploring the shift towards plant-based protein sources and their
+          benefits...
         </p>
       </Modal>
 
@@ -212,18 +261,54 @@ const Campaign = () => {
         onClose={() => setShowHealthFreedomModal(false)}
       >
         <h2>Health Freedom</h2>
-        <p>The unfettered use of over-the-counter (OTC) drugs and self prescriptions is a major health concern in society today. </p>
-        <p>Reduced control and surveillance at drug outlets and administration of medicines by semi-qualified personnel has exposed consumers to danger and worsened the existing health crisis</p>
-        <p>Today, many people do not need to consult physicians as technology enables them to learn about their symptoms and recommend prescriptions. They then proceed to pharmaceutical outlets for their doses of medicine and start their journeys to "recovery" . </p>
-        <p>Unless a qualified medical personnel examines a patient to diagnose ailment, a lot is left to chance and may complicate chances of full and proper recovery. In most of these cases, misdiagnosis leads to usage of the wrong medication and the consequences are dire</p>
-        <p>Self medication also occurs when symptoms of a sickness previously treated recurs. Instead of patients seeking further advice, they walk to  chemists with previous prescriptions and purchase medicine to manage these conditions. In many cases same symptoms may represent other illnesses and comprehensive examinations are necessary before any intervention is preferred.</p>
-        <p>All medical procedures should be preceded by exposing the root cause of disease. This paints the whole picture on the status of things and defines the course of action, leaving nothing to chance.</p>
-        <p>Self medication is fully based on quelling symptoms in the short term and postponing the problem in the long term. Majority of patients who turn up with late stages of deadly diseases such as cancer are victims of self medication. In many other cases, patients who self medicate enable simple disease symptoms to progress to chronic status.</p>
-        <p>There is a pressing needs for public sensitization and education to foster behaviour change in this area.</p>
+        <p>
+          The unfettered use of over-the-counter (OTC) drugs and self
+          prescriptions is a major health concern in society today.{" "}
+        </p>
+        <p>
+          Reduced control and surveillance at drug outlets and administration of
+          medicines by semi-qualified personnel has exposed consumers to danger
+          and worsened the existing health crisis
+        </p>
+        <p>
+          Today, many people do not need to consult physicians as technology
+          enables them to learn about their symptoms and recommend
+          prescriptions. They then proceed to pharmaceutical outlets for their
+          doses of medicine and start their journeys to "recovery" .{" "}
+        </p>
+        <p>
+          Unless a qualified medical personnel examines a patient to diagnose
+          ailment, a lot is left to chance and may complicate chances of full
+          and proper recovery. In most of these cases, misdiagnosis leads to
+          usage of the wrong medication and the consequences are dire
+        </p>
+        <p>
+          Self medication also occurs when symptoms of a sickness previously
+          treated recurs. Instead of patients seeking further advice, they walk
+          to chemists with previous prescriptions and purchase medicine to
+          manage these conditions. In many cases same symptoms may represent
+          other illnesses and comprehensive examinations are necessary before
+          any intervention is preferred.
+        </p>
+        <p>
+          All medical procedures should be preceded by exposing the root cause
+          of disease. This paints the whole picture on the status of things and
+          defines the course of action, leaving nothing to chance.
+        </p>
+        <p>
+          Self medication is fully based on quelling symptoms in the short term
+          and postponing the problem in the long term. Majority of patients who
+          turn up with late stages of deadly diseases such as cancer are victims
+          of self medication. In many other cases, patients who self medicate
+          enable simple disease symptoms to progress to chronic status.
+        </p>
+        <p>
+          There is a pressing needs for public sensitization and education to
+          foster behaviour change in this area.
+        </p>
       </Modal>
 
       {/* Participation Application Form */}
-      
     </div>
   );
 };

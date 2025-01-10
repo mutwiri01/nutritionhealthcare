@@ -12,23 +12,38 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
 }
 
 .logo {
-  color: #ffffff;
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-decoration: none;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  flex-grow: 0;
+  flex: 1;
 }
+
+.logo-image {
+  height: 200px; /* Increase height for better visibility */
+  width: auto; /* Maintain aspect ratio */
+  max-height: 100%; /* Prevent overflowing */
+  max-width: 400px; /* Cap the maximum width */
+}
+
+@media (max-width: 768px) {
+  .logo-image {
+    height: 150px; /* Slightly smaller height on smaller screens */
+  }
+}
+
 
 .nav-links {
   display: flex;
   gap: 1.5rem;
-  margin-left: 4rem;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-item {
+  position: relative;
 }
 
 .nav-link {
@@ -42,6 +57,45 @@
   color: #e8f5e9;
 }
 
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-link {
+  color: #4caf50;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-link:hover {
+  background-color: #e8f5e9;
+}
+
+.nav-link-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.dropdown-icon {
+  color: #ffffff;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-link-wrapper:hover .dropdown-icon {
+  transform: rotate(180deg);
+}
+
 .menu-button {
   display: none;
   background: none;
@@ -49,9 +103,15 @@
   color: #ffffff;
   font-size: 1.5rem;
   cursor: pointer;
+  z-index: 10; /* Ensure the button stays on top */
 }
 
 @media (max-width: 768px) {
+  .nav {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
   .nav-links {
     flex-direction: column;
     position: absolute;
@@ -61,7 +121,7 @@
     background-color: #4caf50;
     padding: 1rem;
     display: none;
-    transition: all 0.3s ease-in-out;
+    z-index: 9; /* Below the menu button */
   }
 
   .nav-links.open {

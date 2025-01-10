@@ -35,7 +35,6 @@
 
 .card:hover,
 .active-card {
-  background-color: #000f01;
   color: white;
   transform: scale(1.05);
 }
