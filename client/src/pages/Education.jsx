@@ -273,7 +273,7 @@ const Education = () => {
         {/* Card for Lifestyle & Health */}
         <div className="card">
           <div className="icon">
-            <img src="/li1.jpg" alt="Lifestyle & Health" />
+            
           </div>
           <h3 className="card-title">Lifestyle & Health</h3>
           <ul>
@@ -319,7 +319,6 @@ const Education = () => {
         {/* Card for Environment & Nutrition */}
         <div className="card">
           <div className="icon">
-            <img src="/env.png" alt="Environment & Nutrition" />
           </div>
           <h3 className="card-title">Environment & Nutrition</h3>
           <ul>

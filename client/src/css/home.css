@@ -6,6 +6,28 @@ body {
   box-sizing: border-box;
 }
 
+@keyframes slideFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFromSide {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .home-container {
   width: 100%;
   padding: 0;
@@ -49,6 +71,7 @@ body {
 }
 
 .home-text {
+  animation-fill-mode: forwards; /* Keep animation's end state */
   position: relative;
   z-index: 2;
   max-width: 800px;
@@ -62,6 +85,8 @@ body {
   font-family: 'Roboto', sans-serif; /* Use Roboto for the title */
   margin-bottom: 1rem;
   color: #000000;
+  animation: slideFromTop 1.5s ease-in-out forwards;
+  
 }
 
 .home-subtitle {
@@ -70,7 +95,30 @@ body {
   font-size: 1.5rem;
   line-height: 1.6;
   color: rgb(10, 10, 10);
+  animation: slideFromSide 2s ease-in-out forwards;
 }
+/* Initial State */
+.home-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Animation Triggered */
+.home-section.animate-section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Section Animation */
+.home-hero.animate-section .home-title {
+  animation: slideFromTop 1s ease-out forwards;
+}
+
+.home-hero.animate-section .home-subtitle {
+  animation: slideFromSide 1.2s ease-out forwards;
+}
+
 
 /* Content Section */
 /* Content Section */
@@ -285,6 +333,7 @@ body {
 
 /* Topics Section */
 /* Topics Section */
+/* Topics Section */
 .topics-section {
   padding: 2rem 1rem;
   background-color: #f0f8ff;
@@ -342,15 +391,6 @@ body {
   text-align: left; /* Align text for better readability */
 }
 
-/* Main Topics Image */
-.topics-image {
-  width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
 /* Responsive Styling for Small Screens */
 @media (max-width: 768px) {
   .topics-section {
@@ -379,3 +419,6 @@ body {
     line-height: 1.4;
   }
 }
+
+
+

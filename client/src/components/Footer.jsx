@@ -52,9 +52,8 @@ const Footer = () => {
             <SocialIcon href="#"><FaTwitter /></SocialIcon>
             <SocialIcon href="#"><FaInstagram /></SocialIcon>
           </SocialIcons>
-          <p>&copy; 2024 Centre for Nutritional Healthcare</p>
+          <p>&copy; 2025 Centre for Nutritional Healthcare</p>
           <p>centre4nutritionalhealth@gmail.com</p>
-          <p>All rights reserved. Consent must be procured for reproduction of any part of the content in this site.</p>
         </FooterContent>
       </FooterContainer>
 

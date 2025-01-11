@@ -7,8 +7,9 @@ import "swiper/css/pagination";
 
 const Home = () => {
   useEffect(() => {
-    const animateNumbers = () => {
-      const numbers = document.querySelectorAll(".interactive-number");
+    // Function to animate numbers
+    const animateNumbers = (element) => {
+      const numbers = element.querySelectorAll(".interactive-number");
       numbers.forEach((number) => {
         const targetValue = +number.getAttribute("data-value");
         let count = 0;
@@ -16,7 +17,7 @@ const Home = () => {
         const updateNumber = () => {
           count += increment;
           if (count >= targetValue) {
-            number.textContent = targetValue.toLocaleString(); // Add commas
+            number.textContent = targetValue.toLocaleString();
           } else {
             number.textContent = Math.floor(count).toLocaleString();
             requestAnimationFrame(updateNumber);
@@ -26,27 +27,33 @@ const Home = () => {
       });
     };
 
-    const handleScroll = () => {
-      const numbersSection = document.querySelector(
-        ".interactive-numbers-content"
-      );
-      if (numbersSection) {
-        const rect = numbersSection.getBoundingClientRect();
-        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-          animateNumbers();
-          window.removeEventListener("scroll", handleScroll); // Trigger once
+    // Function to handle section animations
+    const handleAnimations = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-section");
+          if (entry.target.classList.contains("interactive-numbers-content")) {
+            animateNumbers(entry.target);
+          }
         }
-      }
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Intersection Observer setup
+    const observer = new IntersectionObserver(handleAnimations, {
+      threshold: 0.2,
+    });
+
+    const sections = document.querySelectorAll(".home-section");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect(); // Cleanup on unmount
   }, []);
   return (
     <div className="home-container">
       {/* Hero Section */}
       <div
-        className="home-hero"
+        className="home-hero home-section"
         style={{
           backgroundImage: "url('/la1.jpeg')",
           backgroundAttachment: "fixed", // Enables scroll-over effect
@@ -70,11 +77,11 @@ const Home = () => {
       </div>
 
       {/* Content Section */}
-      <div className="home-content">
+      <div className="home-content home-section">
         <div className="content-wrapper">
           {/* First Paragraph with Image on the Right */}
           <div className="content-row">
-            <div className="content-text">
+            <div className="content-text home-subtitle">
               <p>
                 Diabetes, cancers, cardiovascular diseases, chronic respiratory
                 infections, mental health disorders, stroke, and other
@@ -84,14 +91,11 @@ const Home = () => {
                 requiring more medical care, resulting in higher costs.
               </p>
             </div>
-            <div className="content-image">
-              <img src="/fa2.png" alt="Disease Awareness" />
-            </div>
           </div>
 
           {/* Second Paragraph with Image on the Left */}
           <div className="content-row ">
-            <div className="content-text">
+            <div className="content-text home-subtitle">
               <p>
                 Globally, over 14 million people between the ages of 30 and 70
                 years die every year, and 85% of these deaths are in developing
@@ -103,7 +107,7 @@ const Home = () => {
           </div>
 
           {/* Interactive Numbers */}
-          <div className="interactive-numbers-content">
+          <div className="interactive-numbers-content home-section">
             <div className="number-item">
               <span className="interactive-number" data-value="14000000">
                 0
@@ -159,33 +163,50 @@ const Home = () => {
       </div>
       {/* Card Section */}
       <div className="topics-section">
-        <img
-          src="/l2.png"
-          alt="Key Topics Overview"
-          className="topics-header-image"
-        />
+        <h2 className="topics-title">Explore Our Topics</h2>
         <div className="topics-table">
-          <a href="/campaign" className="topic-row">
-            <img src="/h5.png" alt="Food Justice" className="topic-image" />
-            <p className="topic-text">Food Justice, Lifestyle, and Health</p>
-          </a>
-          <a href="/education" className="topic-row">
-            <img src="/v1.png" alt="Plant Proteins" className="topic-image" />
-            <p className="topic-text">
-              Accelerating Uptake of Plant Proteins to Bridge the Nutrient Gap
-            </p>
-          </a>
+          {/* Example Topic 1 */}
           <a href="/education" className="topic-row">
             <img
-              src="/h3.png"
-              alt="Preventive Health"
+              src="/h5.png"
+              alt="Diabetes Awareness"
               className="topic-image"
             />
-            <p className="topic-text">Advocacy for Preventive Health</p>
+            <div className="topic-text">
+              <h3>Food Justice, Lifestyle, and Health</h3>
+              <p>
+                Learn about Food Justice, Lifestyle, and Health, including tips
+                for diet, exercise, and healthcare management.
+              </p>
+            </div>
           </a>
-          <a href="/education" className="topic-row">
-            <img src="/h7.png" alt="Health Freedom" className="topic-image" />
-            <p className="topic-text">Health Freedom</p>
+
+          {/* Example Topic 2 */}
+          <a href="/campaign" className="topic-row">
+            <img src="/h3.png" alt="Mental Health" className="topic-image" />
+            <div className="topic-text">
+              <h3>Advocacy for Preventive Health</h3>
+              <p>
+                Discover strategies to maintain wellness and reduce stress in
+                your daily life.
+              </p>
+            </div>
+          </a>
+
+          {/* Example Topic 3 */}
+          <a href="/campaign" className="topic-row">
+            <img
+              src="/h7.png"
+              alt="Cardiovascular Health"
+              className="topic-image"
+            />
+            <div className="topic-text">
+              <h3>Health Freedom</h3>
+              <p>
+                Find out how to protect your heart with actionable advice on
+                lifestyle and treatment options.
+              </p>
+            </div>
           </a>
         </div>
       </div>
